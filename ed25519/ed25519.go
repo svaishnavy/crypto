@@ -189,7 +189,7 @@ func Verify(publicKey PublicKey, message, sig []byte) bool {
 	edwards25519.FeNeg(&A.X, &A.X)
 	edwards25519.FeNeg(&A.T, &A.T)
 
-	h, _ := blake2b.New(nil)
+	h, _ := blake2b.New512(nil)
 	h.Write(sig[:32])
 	h.Write(publicKey[:])
 	h.Write(message)
